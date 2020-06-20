@@ -314,19 +314,50 @@ namespace QualityMeasurementTest
         [Test]
         public void Given1YardAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
         {
-            Length firstYardValue = new Length(Length.Unit.YARD, 1.0);
-            Length secondYardValue = new Length(Length.Unit.YARD, 1.0);
-            bool compareCheck = firstYardValue.Compare(secondYardValue);
-            Assert.IsTrue(compareCheck);
+            try
+            {
+                Length firstYardValue = new Length(Length.Unit.YARD, 1.0);
+                Length secondYardValue = new Length(Length.Unit.YARD, 1.0);
+                bool compareCheck = firstYardValue.Compare(secondYardValue);
+                Assert.IsTrue(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
 
         [Test]
-        public void Given3FeetAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
+        public void GivenThreeFeetAndOneYard_WhenComparingLength_ShouldReturnTrue()
         {
-            Length feetValue = new Length(Length.Unit.FEET, 6.0);
-            Length yardValue = new Length(Length.Unit.YARD, 2.0);
-            bool compareCheck = feetValue.Compare(yardValue);
-            Assert.IsTrue(compareCheck);
+            try
+            {
+                Length feetValue = new Length(Length.Unit.FEET, 9.0);
+                Length yardValue = new Length(Length.Unit.YARD, 3.0);
+                bool compareCheck = feetValue.Compare(yardValue);
+                Assert.IsTrue(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
+
+        [Test]
+        public void GivenOneFeetAndOneYard_WhenCompareLength_ShouldReturnFalse()
+        {
+            try
+            {
+                Length feetValue = new Length(Length.Unit.FEET, 1.0);
+                Length yardValue = new Length(Length.Unit.YARD, 2.0);
+                bool compareCheck = feetValue.Compare(yardValue);
+                Assert.IsFalse(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
     }
 }
