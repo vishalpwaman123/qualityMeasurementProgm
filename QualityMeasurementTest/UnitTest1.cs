@@ -312,14 +312,14 @@ namespace QualityMeasurementTest
         }
 
         [Test]
-        public void Given1YardAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
+        public void Given1YardAnd1Yard_WhenComparingLength_ShouldReturnNOTEqualLength()
         {
             try
             {
                 Length firstYardValue = new Length(Length.Unit.YARD, 1.0);
                 Length secondYardValue = new Length(Length.Unit.YARD, 1.0);
                 bool compareCheck = firstYardValue.Compare(secondYardValue);
-                Assert.IsTrue(compareCheck);
+                Assert.IsFalse(compareCheck);
             }
             catch (QualityMeaurementException e)
             {
@@ -359,5 +359,20 @@ namespace QualityMeasurementTest
             }
         }
 
+        [Test]
+        public void Given1InchAnd1Yard_WhenComparingLength_ShouldReturnNotEqualLength()
+        {
+            try
+            {
+                Length inchValue = new Length(Length.Unit.INCH, 1.0);
+                Length yardValue = new Length(Length.Unit.YARD, 1.0);
+                bool compareCheck = inchValue.Compare(yardValue);
+                Assert.IsFalse(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }

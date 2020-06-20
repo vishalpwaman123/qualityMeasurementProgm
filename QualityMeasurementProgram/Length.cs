@@ -31,11 +31,6 @@ namespace QualityMeasurementProgram
 
         public bool Compare(Length Value)
         {  
-            if(this.value.Equals(Value.value))
-            {
-                return true;
-            }
-
             if (this.unit.Equals(Unit.FEET) && Value.unit.Equals(Unit.INCH))
             {
                 return Value.value.CompareTo(this.value * FeetToInch) == 0;
