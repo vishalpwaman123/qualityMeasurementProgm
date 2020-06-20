@@ -11,6 +11,8 @@ namespace QualityMeasurementProgram
         private Unit unit;
         private double value;
         private double FeetToInch = 12.0;
+        private double InchToFeet = 12.0;
+
 
         public Length(Unit unit, double value)
         {
@@ -37,6 +39,11 @@ namespace QualityMeasurementProgram
             {
                 return Value.value.CompareTo(this.value * FeetToInch) == 0;
             }
+            if (this.unit.Equals(Unit.INCH) && Value.unit.Equals(Unit.FEET))
+            {
+                return Value.value.CompareTo(this.value / InchToFeet) == 0;
+            }
+
             return false;
         }
 
