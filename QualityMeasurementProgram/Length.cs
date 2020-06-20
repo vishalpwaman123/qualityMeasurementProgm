@@ -6,13 +6,13 @@ namespace QualityMeasurementProgram
 {
    public class Length
     {
-        public enum Unit { FEET, INCH , YARD }
+        public enum Unit { FEET, INCH ,YARD}
 
         private Unit unit;
         private double value;
         private double FeetToInch = 12.0;
         private double InchToFeet = 12.0;
-
+        private double FeetToYard = 3.0;
 
         public Length(Unit unit, double value)
         {
@@ -35,13 +35,20 @@ namespace QualityMeasurementProgram
             {
                 return true;
             }
+
             if (this.unit.Equals(Unit.FEET) && Value.unit.Equals(Unit.INCH))
             {
                 return Value.value.CompareTo(this.value * FeetToInch) == 0;
             }
+
             if (this.unit.Equals(Unit.INCH) && Value.unit.Equals(Unit.FEET))
             {
                 return Value.value.CompareTo(this.value / InchToFeet) == 0;
+            }
+
+            if (this.unit.Equals(Unit.FEET) && Value.unit.Equals(Unit.YARD))
+            {
+                return Value.value.CompareTo(this.value / FeetToYard) == 0;
             }
 
             return false;

@@ -320,5 +320,13 @@ namespace QualityMeasurementTest
             Assert.IsTrue(compareCheck);
         }
 
+        [Test]
+        public void Given3FeetAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
+        {
+            Length feetValue = new Length(Length.Unit.FEET, 6.0);
+            Length yardValue = new Length(Length.Unit.YARD, 2.0);
+            bool compareCheck = feetValue.Compare(yardValue);
+            Assert.IsTrue(compareCheck);
+        }
     }
 }
