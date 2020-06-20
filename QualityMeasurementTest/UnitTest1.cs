@@ -406,5 +406,21 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1YardAnd3Feet_WhenComparingLength_ShouldReturnEqualLength()
+        {
+            try
+            {
+                Length yardValue = new Length(Length.Unit.YARD, 1.0);
+                Length feetValue = new Length(Length.Unit.FEET, 3.0);
+                bool compareCheck = yardValue.Compare(feetValue);
+                Assert.IsTrue(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
