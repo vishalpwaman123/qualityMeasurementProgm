@@ -30,7 +30,7 @@ namespace QualityMeasurementTest
         {
             try
             {
-
+                
                 Feet firstFeet = new Feet("0.0");
                 Feet secondFeet = new Feet(0.0);
                 Assert.AreEqual(firstFeet, secondFeet);
@@ -39,6 +39,14 @@ namespace QualityMeasurementTest
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
+        }
+
+        [Test]
+        public void GivenZeroFeetAndZeroFeet_ShouldReturnsNotEqual()
+        {
+            Feet firstFeet = new Feet(0.0);
+            Feet secondFeet = new Feet(5.0);
+            Assert.AreNotEqual(firstFeet, secondFeet);
         }
 
     }
