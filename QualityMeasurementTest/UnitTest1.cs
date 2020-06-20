@@ -73,5 +73,13 @@ namespace QualityMeasurementTest
             Feet secondFeet = new Feet(1.0);
             Assert.AreNotEqual(firstFeet, secondFeet);
         }
+
+        [Test]
+        public void Given0InchAnd0Inch_WhenValueChecked_ShouldReturnEqual()
+        {
+            Inch firstInch = new Inch(0.0);
+            Inch secondInch = new Inch(0.0);
+            Assert.AreEqual(firstInch, secondInch);
+        }
     }
 }
