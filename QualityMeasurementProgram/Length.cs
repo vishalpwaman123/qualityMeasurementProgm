@@ -14,6 +14,10 @@ namespace QualityMeasurementProgram
         public Length(Unit unit, double value)
         {
             this.unit = unit;
+            if (value.Equals(typeof(string)))
+            {
+                throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
+            }
             this.value = value;
         }
 

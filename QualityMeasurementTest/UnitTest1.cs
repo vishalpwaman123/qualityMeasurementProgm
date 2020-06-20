@@ -196,12 +196,31 @@ namespace QualityMeasurementTest
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void GivenOneFeetAndOneInch_WhenValueChecked_ShouldReturnNotEqualLength()
         {
             try
             {
                 Length feetValue = new Length(Length.Unit.FEET, 1.0);
+                Length inchValue = new Length(Length.Unit.INCH, 2.0);
+                bool compareCheck = feetValue.Compare(inchValue);
+                Assert.IsFalse(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenOneFeetAndOneInch_WhenInvalidValueChecked_ShouldReturnThrowException()
+        {
+            try
+            {
+                Length feetValue = new Length(Length.Unit.FEET, "1.0");
                 Length inchValue = new Length(Length.Unit.INCH, 2.0);
                 bool compareCheck = feetValue.Compare(inchValue);
                 Assert.IsFalse(compareCheck);
