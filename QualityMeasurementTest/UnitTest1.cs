@@ -49,5 +49,13 @@ namespace QualityMeasurementTest
             Assert.AreNotEqual(firstFeet, secondFeet);
         }
 
+        [Test]
+        public void GivenTwoObjects_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
+        {
+            Feet firstFeet = new Feet(0.0);
+            Feet secondFeet = firstFeet;
+            bool areEqual = System.Object.ReferenceEquals(firstFeet, secondFeet);
+            Assert.IsTrue(areEqual);
+        }
     }
 }
