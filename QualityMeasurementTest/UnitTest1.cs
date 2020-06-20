@@ -422,5 +422,20 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given0YardAndNull_ShouldReturnsNotEqual()
+        {
+            try
+            {
+                Length firstYard = new Length(Length.Unit.YARD, 0.0);
+                Length secondYard = null;
+                Assert.AreNotEqual(firstYard, secondYard);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
