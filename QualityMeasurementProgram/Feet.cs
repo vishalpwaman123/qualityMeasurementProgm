@@ -17,21 +17,21 @@ namespace QualityMeasurementProgram
         {
             throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
         }
-        public override bool Equals(object o)
+        public override bool Equals(object object_parameter)
         {
             // It checks for the Object
-            if (this == o)
+            if (this == object_parameter)
             {
                 return true;
             }
 
             // It checks for object if null or object type is not equal then return false
-            if (o == null || !this.GetType().Equals(o.GetType()))
+            if (object_parameter == null || !this.GetType().Equals(object_parameter.GetType()))
             {
                 return false;
             }
 
-            Feet feet = (Feet)o;
+            Feet feet = (Feet)object_parameter;
             return value.CompareTo(feet.value) == 0;
         }
 

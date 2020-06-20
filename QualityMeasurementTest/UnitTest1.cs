@@ -1,7 +1,8 @@
-using NUnit.Framework;
-using QualityMeasurementProgram;
 namespace QualityMeasurementTest
 {
+    using NUnit.Framework;
+    using QualityMeasurementProgram;
+
     public class Tests
     {
         [SetUp]
@@ -14,7 +15,6 @@ namespace QualityMeasurementTest
         {
             try
             {
-
                 Length firstFeet = new Length(Length.Unit.FEET, 0.0);
                 Length secondFeet = new Length(Length.Unit.FEET, 0.0);
                 Assert.AreEqual(firstFeet, secondFeet);
@@ -184,19 +184,32 @@ namespace QualityMeasurementTest
         [Test]
         public void GivenZeroFeetAndZeroInch_WhenValueChecked_ShouldReturnEqualLength()
         {
-            Length feetValue = new Length(Length.Unit.FEET, 0.0);
-            Length inchValue = new Length(Length.Unit.INCH, 0.0);
-            bool compareCheck = feetValue.Compare(inchValue);
-            Assert.IsTrue(compareCheck);
+            try
+            {
+                Length feetValue = new Length(Length.Unit.FEET, 0.0);
+                Length inchValue = new Length(Length.Unit.INCH, 0.0);
+                bool compareCheck = feetValue.Compare(inchValue);
+                Assert.IsTrue(compareCheck);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
 
         [Test]
         public void GivenOneFeetAndOneInch_WhenValueChecked_ShouldReturnNotEqualLength()
         {
-            Length feetValue = new Length(Length.Unit.FEET, 1.0);
-            Length inchValue = new Length(Length.Unit.INCH, 1.0);
-            bool compareCheck = feetValue.Equals(inchValue);
-            Assert.IsFalse(compareCheck);
+            try
+            {
+                Length feetValue = new Length(Length.Unit.FEET, 1.0);
+                Length inchValue = new Length(Length.Unit.INCH, 2.0);
+                bool compareCheck = feetValue.Compare(inchValue);
+                Assert.IsFalse(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
     }
 }

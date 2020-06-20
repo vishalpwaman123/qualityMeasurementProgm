@@ -23,25 +23,29 @@ namespace QualityMeasurementProgram
         }
 
         public bool Compare(Length inchValue)
-        {
-            return true;
+        {  
+            if(this.value.Equals(inchValue.value))
+            {
+                return true;
+            }
+            return false;
         }
 
-        public override bool Equals(object o)
+        public override bool Equals(object object_parameter)
         {
             // It checks for the Object
-            if (this == o)
+            if (this == object_parameter)
             {
                 return true;
             }
 
             // It checks for object if null or object type is not equal then return false
-            if (o == null || !this.GetType().Equals(o.GetType()))
+            if (object_parameter == null || !this.GetType().Equals(object_parameter.GetType()))
             {
                 return false;
             }
 
-            Length length = (Length)o;
+            Length length = (Length)object_parameter;
             return value.CompareTo(length.value) == 0 & unit == length.unit;
         }
     }

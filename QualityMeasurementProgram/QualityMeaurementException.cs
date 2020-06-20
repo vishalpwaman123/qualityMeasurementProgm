@@ -17,7 +17,8 @@ namespace QualityMeasurementProgram
 
         public enum ExceptionType
         {
-            INVALID_ARGUMENT
+            INVALID_ARGUMENT,
+            UNWANTED_EXCEPTION
         }
     }
 
