@@ -10,6 +10,7 @@ namespace QualityMeasurementProgram
 
         private Unit unit;
         private double value;
+        private double FeetToInch = 12.0;
 
         public Length(Unit unit, double value)
         {
@@ -26,11 +27,15 @@ namespace QualityMeasurementProgram
             throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
         }
 
-        public bool Compare(Length inchValue)
+        public bool Compare(Length Value)
         {  
-            if(this.value.Equals(inchValue.value))
+            if(this.value.Equals(Value.value))
             {
                 return true;
+            }
+            if (this.unit.Equals(Unit.FEET) && Value.unit.Equals(Unit.INCH))
+            {
+                return Value.value.CompareTo(this.value * FeetToInch) == 0;
             }
             return false;
         }
