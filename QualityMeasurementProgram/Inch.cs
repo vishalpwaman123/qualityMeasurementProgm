@@ -12,6 +12,11 @@ namespace QualityMeasurementProgram
         {
             this.value = value;
         }
+
+        public Inch(string value)
+        {
+            throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
+        }
         public override bool Equals(object o)
         {
             // It checks for the Object

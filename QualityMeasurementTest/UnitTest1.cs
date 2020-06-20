@@ -81,5 +81,18 @@ namespace QualityMeasurementTest
             Inch secondInch = new Inch(0.0);
             Assert.AreEqual(firstInch, secondInch);
         }
+
+        [Test]
+        public void Given0InchAnd0Inch_WhenInvaluedArgument_ShouldReturnEqual()
+        {
+            try
+            {
+                Inch firstInch = new Inch("0.0");
+                Inch secondInch = new Inch(0.0);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
