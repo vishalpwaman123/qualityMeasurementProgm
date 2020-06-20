@@ -15,8 +15,8 @@ namespace QualityMeasurementTest
             try
             {
 
-                Feet firstFeet = new Feet(0.0);
-                Feet secondFeet = new Feet(0.0);
+                Length firstFeet = new Length(Length.Unit.FEET, 0.0);
+                Length secondFeet = new Length(Length.Unit.FEET, 0.0);
                 Assert.AreEqual(firstFeet, secondFeet);
             }
             catch (QualityMeaurementException e)
@@ -30,9 +30,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                
-                Feet firstFeet = new Feet("0.0");
-                Feet secondFeet = new Feet(0.0);
+
+                Length firstFeet = new Length(Length.Unit.FEET, "0.0");
+                Length secondFeet = new Length(Length.Unit.FEET, 0.0);
                 Assert.AreEqual(firstFeet, secondFeet);
             }
             catch (QualityMeaurementException e)
@@ -44,8 +44,8 @@ namespace QualityMeasurementTest
         [Test]
         public void GivenZeroFeetAndZeroFeet_ShouldReturnsNotEqual()
         {
-            Feet firstFeet = new Feet(0.0);
-            Feet secondFeet = new Feet(5.0);
+            Length firstFeet = new Length(Length.Unit.FEET, 0.0);
+            Length secondFeet = new Length(Length.Unit.FEET, 5.0);
             Assert.AreNotEqual(firstFeet, secondFeet);
         }
 
@@ -54,8 +54,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Feet firstFeet = new Feet(0.0);
-                Feet secondFeet = firstFeet;
+                Length firstFeet = new Length(Length.Unit.FEET, 0.0);
+                Length secondFeet = firstFeet;
                 bool areEqual = System.Object.ReferenceEquals(firstFeet, secondFeet);
                 Assert.IsTrue(areEqual);
             }catch(QualityMeaurementException e)
@@ -69,8 +69,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Feet firstFeet = new Feet(0.0);
-                Feet secondFeet = new Feet(3.0);
+                Length firstFeet = new Length(Length.Unit.FEET, 0.0); ;
+                Length secondFeet = new Length(Length.Unit.FEET, 3.0);
                 Assert.AreEqual(firstFeet.GetType(), secondFeet.GetType());
             }catch(QualityMeaurementException e)
             {
@@ -83,8 +83,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Feet firstFeet = new Feet(0.0);
-                Feet secondFeet = new Feet(1.0);
+                Length firstFeet = new Length(Length.Unit.FEET, 0.0);
+                Length secondFeet = new Length(Length.Unit.FEET, 1.0);
                 Assert.AreNotEqual(firstFeet, secondFeet);
             }catch(QualityMeaurementException e)
             {
@@ -93,12 +93,12 @@ namespace QualityMeasurementTest
         }
 
         [Test]
-        public void Given0InchAnd0Inch_WhenValueChecked_ShouldReturnEqual()
+        public void GivenZeroInchAndZeroInch_WhenValueChecked_ShouldReturnEqual()
         {
             try
             {
-                Inch firstInch = new Inch(0.0);
-                Inch secondInch = new Inch(0.0);
+                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                Length secondInch = new Length(Length.Unit.INCH, 0.0);
                 Assert.AreEqual(firstInch, secondInch);
             }catch(QualityMeaurementException e)
             {
@@ -111,9 +111,10 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Inch firstInch = new Inch("0.0");
-                Inch secondInch = new Inch(0.0);
-            }catch(QualityMeaurementException e)
+                Length firstInch = new Length(Length.Unit.INCH, "0.0");
+                Length secondInch = new Length(Length.Unit.INCH, 0.0);
+            }
+            catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
@@ -124,8 +125,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Inch firstInch = new Inch(0.0);
-                Inch secondInch = null;
+                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                Length secondInch = null;
                 Assert.AreNotEqual(firstInch, secondInch);
             }catch(QualityMeaurementException e)
             {
@@ -138,8 +139,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Inch firstInch = new Inch(0.0);
-                Inch secondInch = new Inch(0.0);
+                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                Length secondInch = new Length(Length.Unit.INCH, 0.0);
                 bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
                 Assert.IsFalse(areEqual);
             }catch(QualityMeaurementException e)
@@ -156,8 +157,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Inch firstInch = new Inch(0.0);
-                Inch secondInch = firstInch;
+                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                Length secondInch = firstInch;
                 bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
                 Assert.IsTrue(areEqual);
             }catch(QualityMeaurementException e)
@@ -171,8 +172,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Inch firstInch = new Inch(0.0);
-                Inch secondInch = new Inch(3.0);
+                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                Length secondInch = new Length(Length.Unit.INCH, 0.0);
                 Assert.AreEqual(firstInch.GetType(), secondInch.GetType());
             }catch(QualityMeaurementException e)
             {
