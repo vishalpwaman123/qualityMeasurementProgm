@@ -1,0 +1,13 @@
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\bin\Debug\netcoreapp3.1\QualityMeasurementProgram.exe
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\bin\Debug\netcoreapp3.1\QualityMeasurementProgram.deps.json
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\bin\Debug\netcoreapp3.1\QualityMeasurementProgram.runtimeconfig.json
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\bin\Debug\netcoreapp3.1\QualityMeasurementProgram.runtimeconfig.dev.json
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\bin\Debug\netcoreapp3.1\QualityMeasurementProgram.dll
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\bin\Debug\netcoreapp3.1\QualityMeasurementProgram.pdb
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.csprojAssemblyReference.cache
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.AssemblyInfoInputs.cache
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.AssemblyInfo.cs
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.csproj.CoreCompileInputs.cache
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.dll
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.pdb
+C:\Users\Vishal\source\repos\QualityMeasurementProgram\QualityMeasurementProgram\obj\Debug\netcoreapp3.1\QualityMeasurementProgram.genruntimeconfig.cache
