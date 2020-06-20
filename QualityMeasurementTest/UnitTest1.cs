@@ -52,34 +52,58 @@ namespace QualityMeasurementTest
         [Test]
         public void GivenTwoObjects_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
         {
-            Feet firstFeet = new Feet(0.0);
-            Feet secondFeet = firstFeet;
-            bool areEqual = System.Object.ReferenceEquals(firstFeet, secondFeet);
-            Assert.IsTrue(areEqual);
+            try
+            {
+                Feet firstFeet = new Feet(0.0);
+                Feet secondFeet = firstFeet;
+                bool areEqual = System.Object.ReferenceEquals(firstFeet, secondFeet);
+                Assert.IsTrue(areEqual);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
 
         [Test]
         public void GivenTwoObjects_WhenTypeChecked_ShouldReturnEqual()
         {
-            Feet firstFeet = new Feet(0.0);
-            Feet secondFeet = new Feet(3.0);
-            Assert.AreEqual(firstFeet.GetType(), secondFeet.GetType());
+            try
+            {
+                Feet firstFeet = new Feet(0.0);
+                Feet secondFeet = new Feet(3.0);
+                Assert.AreEqual(firstFeet.GetType(), secondFeet.GetType());
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
 
         [Test]
         public void Given0FeetAnd1Feet_WhenValueChecked_ShouldReturnNotEqual()
         {
-            Feet firstFeet = new Feet(0.0);
-            Feet secondFeet = new Feet(1.0);
-            Assert.AreNotEqual(firstFeet, secondFeet);
+            try
+            {
+                Feet firstFeet = new Feet(0.0);
+                Feet secondFeet = new Feet(1.0);
+                Assert.AreNotEqual(firstFeet, secondFeet);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
 
         [Test]
         public void Given0InchAnd0Inch_WhenValueChecked_ShouldReturnEqual()
         {
-            Inch firstInch = new Inch(0.0);
-            Inch secondInch = new Inch(0.0);
-            Assert.AreEqual(firstInch, secondInch);
+            try
+            {
+                Inch firstInch = new Inch(0.0);
+                Inch secondInch = new Inch(0.0);
+                Assert.AreEqual(firstInch, secondInch);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
 
         [Test]
@@ -89,6 +113,20 @@ namespace QualityMeasurementTest
             {
                 Inch firstInch = new Inch("0.0");
                 Inch secondInch = new Inch(0.0);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void Given0InchAndNull_ShouldReturnsNotEqual()
+        {
+            try
+            {
+                Inch firstInch = new Inch(0.0);
+                Inch secondInch = null;
+                Assert.AreNotEqual(firstInch, secondInch);
             }catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
