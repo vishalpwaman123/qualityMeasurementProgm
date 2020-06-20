@@ -120,13 +120,43 @@ namespace QualityMeasurementTest
         }
 
         [Test]
-        public void Given0InchAndNull_ShouldReturnsNotEqual()
+        public void GivenZeroInchAndNull_ShouldReturnsNotEqual()
         {
             try
             {
                 Inch firstInch = new Inch(0.0);
                 Inch secondInch = null;
                 Assert.AreNotEqual(firstInch, secondInch);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenTwoObjectsOfInch_WhenCheckReference_ShouldReturnFalse()
+        {
+            try
+            {
+                Inch firstInch = new Inch(0.0);
+                Inch secondInch = new Inch(0.0);
+                bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
+                Assert.IsFalse(areEqual);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenTwoObjectsOfInch_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
+        {
+            try
+            {
+                Inch firstInch = new Inch(0.0);
+                Inch secondInch = firstInch;
+                bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
+                Assert.IsTrue(areEqual);
             }catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
