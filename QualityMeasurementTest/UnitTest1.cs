@@ -264,6 +264,22 @@ namespace QualityMeasurementTest
         }
 
         [Test]
+        public void Given1FeetAnd13Inch_WhenComparingLength_ShouldReturnNonEqualLength()
+        {
+            try
+            {
+                Length feetValue = new Length(Length.Unit.FEET, 1.0);
+                Length inchValue = new Length(Length.Unit.INCH, 13.0);
+                bool compareCheck = feetValue.Compare(inchValue);
+                Assert.IsFalse(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
         public void Given12InchAnd1Feet_WhenComparingLength_ShouldReturnEqualLength()
         {
             try
@@ -277,6 +293,40 @@ namespace QualityMeasurementTest
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
+        }
+
+        [Test]
+        public void Given12InchAnd1Feet_WhenComparingLength_ShouldReturnNonEqualLength()
+        {
+            try
+            {
+                Length inchValue = new Length(Length.Unit.INCH, 12.0);
+                Length feetValue = new Length(Length.Unit.FEET, 2.0);
+                bool compareCheck = inchValue.Compare(feetValue);
+                Assert.IsFalse(compareCheck);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void Given1YardAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
+        {
+            Length firstYardValue = new Length(Length.Unit.YARD, 1.0);
+            Length secondYardValue = new Length(Length.Unit.YARD, 1.0);
+            bool compareCheck = firstYardValue.Compare(secondYardValue);
+            Assert.IsTrue(compareCheck);
+        }
+
+        [Test]
+        public void Given3FeetAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
+        {
+            Length feetValue = new Length(Length.Unit.FEET, 6.0);
+            Length yardValue = new Length(Length.Unit.YARD, 2.0);
+            bool compareCheck = feetValue.Compare(yardValue);
+            Assert.IsTrue(compareCheck);
         }
     }
 }
