@@ -310,5 +310,15 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1YardAnd1Yard_WhenComparingLength_ShouldReturnEqualLength()
+        {
+            Length firstYardValue = new Length(Length.Unit.YARD, 1.0);
+            Length secondYardValue = new Length(Length.Unit.YARD, 1.0);
+            bool compareCheck = firstYardValue.Compare(secondYardValue);
+            Assert.IsTrue(compareCheck);
+        }
+
     }
 }

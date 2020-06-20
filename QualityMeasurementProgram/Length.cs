@@ -6,7 +6,7 @@ namespace QualityMeasurementProgram
 {
    public class Length
     {
-        public enum Unit { FEET, INCH }
+        public enum Unit { FEET, INCH , YARD }
 
         private Unit unit;
         private double value;
