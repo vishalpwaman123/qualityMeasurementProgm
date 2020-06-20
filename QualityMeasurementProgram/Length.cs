@@ -22,6 +22,11 @@ namespace QualityMeasurementProgram
             throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
         }
 
+        public bool Compare(Length inchValue)
+        {
+            return true;
+        }
+
         public override bool Equals(object o)
         {
             // It checks for the Object
