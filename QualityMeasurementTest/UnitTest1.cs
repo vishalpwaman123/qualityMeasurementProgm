@@ -148,6 +148,9 @@ namespace QualityMeasurementTest
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void GivenTwoObjectsOfInch_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
         {
@@ -157,6 +160,20 @@ namespace QualityMeasurementTest
                 Inch secondInch = firstInch;
                 bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
                 Assert.IsTrue(areEqual);
+            }catch(QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenTwoObjectsOfInch_WhenTypeChecked_ShouldReturnEqual()
+        {
+            try
+            {
+                Inch firstInch = new Inch(0.0);
+                Inch secondInch = new Inch(3.0);
+                Assert.AreEqual(firstInch.GetType(), secondInch.GetType());
             }catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
