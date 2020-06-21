@@ -239,7 +239,7 @@ namespace QualityMeasurementProgram
         }
 
         [Test]
-        public void Given1LitreAnd1000MiliLitre_WhenAdded_ShouldReturnSum()
+        public void Given1LitreAnd1000MiliLitre_WhenAdded_ShouldReturnAddition()
         {
             try
             {
@@ -248,6 +248,23 @@ namespace QualityMeasurementProgram
                 double ActualValue = litre.AddTwoVolume(litreValue, miliLitreValue);
                 double ExpectedValue = 2.0;
                 Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void Given1GallonAnd1000MiliLitre_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double gallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLONToLITRE, 1.0);
+                double miliLitreValue = miliLitre.ConvertValueToInch(Volumes.Unit.MILILITREToLITRE, 1000.0);
+                double ActualValue = litre.AddTwoVolume(gallonValue, miliLitreValue);
+                double ExpectedValue = 4.78;
+                Assert.AreEqual(ExpectedValue, Math.Round(ActualValue, 2));
             }
             catch (QualityMeaurementException e)
             {
