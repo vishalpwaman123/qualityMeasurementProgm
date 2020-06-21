@@ -12,7 +12,8 @@ namespace QualityMeasurementProgram
             YARD,
             FEETToINCH,
             YARDToINCH,
-            CENTIMETER
+            CENTIMETER,
+            CENTIMETERToINCH
         }
 
         private Unit unit;
@@ -34,6 +35,11 @@ namespace QualityMeasurementProgram
                 {
                     return value * 36.0;
                 }
+                else if(unit.Equals(Unit.CENTIMETERToINCH))
+                {
+                    return value / 2.5;
+                }
+
                 return value;
         }
         public Length(Unit unit, string value)
