@@ -685,5 +685,22 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1FeetAnd1Yard_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                double ActualValue = inch.AddTwoLength(feetValue, yardValue);
+                double ExpectedValue = 48.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
