@@ -154,5 +154,22 @@ namespace NUnitTestQuantityMeasurement
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1LitreAnd1Litre_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double firstKiloGramValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 1.0);
+                double secondKiloGramValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 1.0);
+                double ActualValue = kiloGram.AddTwoWeight(firstKiloGramValue, secondKiloGramValue);
+                double ExpectedValue = 2.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }

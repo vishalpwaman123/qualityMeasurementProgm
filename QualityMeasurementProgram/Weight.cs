@@ -18,6 +18,10 @@ namespace QualityMeasurementProgram
         {
 
         }
+        public double AddTwoWeight(double firstKiloGramValue, double secondKiloGramValue)
+        {
+            return firstKiloGramValue + secondKiloGramValue;
+        }
         public double ConvertValueToKiloGrams(Unit unit, double value)
         {
             try
