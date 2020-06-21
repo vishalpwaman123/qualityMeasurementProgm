@@ -62,5 +62,20 @@ namespace NUnitTestQuantityMeasurement
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given0CelsiusAnd1Celsius_WhenValueChecked_ShouldReturnNotEqual()
+        {
+            try
+            {
+                double firstCelsiusValue = celsius.ConvertValueToCelsius(Temperature.Unit.Celsius, 0.0);
+                double secondCelsiusValue = celsius.ConvertValueToCelsius(Temperature.Unit.Celsius, 1.0);
+                Assert.AreNotEqual(firstCelsiusValue, secondCelsiusValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
