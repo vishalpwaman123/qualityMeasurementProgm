@@ -77,5 +77,20 @@ namespace NUnitTestQuantityMeasurement
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given212FahrenheitAnd100Celsius_WhenValueChecked_ShouldReturnEqual()
+        {
+            try
+            {
+                double fahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.FahrenheitToCelsius, 212.0);
+                double celsiusValue = celsius.ConvertValueToCelsius(Temperature.Unit.Celsius, 100.0);
+                Assert.AreNotEqual(fahrenheitValue, celsiusValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
