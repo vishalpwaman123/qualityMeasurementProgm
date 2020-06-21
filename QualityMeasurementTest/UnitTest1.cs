@@ -554,5 +554,19 @@ namespace QualityMeasurementTest
             }
         }
 
+        [Test]
+        public void Given1FeetAnd1CentiMeter_WhenValueChecked_ShouldReturnNotEqual()
+        {
+            try
+            {
+                double feetValue = inch.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double centimeterValue = inch.ConvertTheValue(Length.Unit.CENTIMETERToINCH, 1.0);
+                Assert.AreNotEqual(feetValue, centimeterValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
