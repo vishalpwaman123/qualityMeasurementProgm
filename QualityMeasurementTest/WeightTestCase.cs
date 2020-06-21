@@ -171,5 +171,22 @@ namespace NUnitTestQuantityMeasurement
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1TonneAnd1000Gram_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double tonneValue = tonne.ConvertValueToKiloGrams(Weight.Unit.TONNEtoKILOGRAM, 1.0);
+                double gramValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.GRAMStoKILOGRAMS, 1000.0);
+                double ActualValue = kiloGram.AddTwoWeight(tonneValue, gramValue);
+                double ExpectedValue = 1001.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
