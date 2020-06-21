@@ -8,16 +8,17 @@ namespace QualityMeasurementProgram
     { 
         public enum Unit
         {
-            Gallon,
-            Litre,
-            GallonToLitre
+            GALLON,
+            LITRE,
+            GALLONToLITRE,
+            MILILITREToLITRE
         }
 
         public double ConvertValueToInch(Unit unit, double value)
         {
             try
             {
-                if (unit.Equals(Unit.GallonToLitre))
+                if (unit.Equals(Unit.GALLONToLITRE))
                 {
                     return value * 3.78;
                 }

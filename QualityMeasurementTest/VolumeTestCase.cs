@@ -9,12 +9,14 @@ namespace QualityMeasurementProgram
     {
         private Volumes litre = null;
         private Volumes gallon = null;
+        private Volumes miliLitre = null;
 
         [SetUp]
         public void Setup()
         {
             this.litre = new Volumes();
             this.gallon = new Volumes();
+            this.miliLitre = new Volumes();
         }
 
         [Test]
@@ -22,8 +24,8 @@ namespace QualityMeasurementProgram
         {
             try
             {
-                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 0.0);
-                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 0.0);
+                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 0.0);
+                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 0.0);
                 Assert.AreEqual(firstGallonValue, secondGallonValue);
             }
             catch (QualityMeaurementException e)
@@ -37,7 +39,7 @@ namespace QualityMeasurementProgram
         {
             try
             {
-                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 0.0);
+                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 0.0);
                 Volumes secondGallonValue = null;
                 Assert.AreNotEqual(firstGallonValue, secondGallonValue);
             }
@@ -85,8 +87,8 @@ namespace QualityMeasurementProgram
         {
             try
             {
-                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 3.0);
-                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 3.0);
+                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 3.0);
+                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 3.0);
                 Assert.AreEqual(firstGallonValue.GetType(), secondGallonValue.GetType());
             }
             catch (QualityMeaurementException e)
@@ -100,8 +102,8 @@ namespace QualityMeasurementProgram
         {
             try
             {
-                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 0.0);
-                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 1.0);
+                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 0.0);
+                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLON, 1.0);
                 Assert.AreNotEqual(firstGallonValue, secondGallonValue);
             }
             catch (QualityMeaurementException e)
@@ -115,8 +117,8 @@ namespace QualityMeasurementProgram
         {
             try
             {
-                double firstLitreValue = litre.ConvertValueToInch(Volumes.Unit.Litre, 0.0);
-                double secondLitreValue = litre.ConvertValueToInch(Volumes.Unit.Litre, 0.0);
+                double firstLitreValue = litre.ConvertValueToInch(Volumes.Unit.LITRE, 0.0);
+                double secondLitreValue = litre.ConvertValueToInch(Volumes.Unit.LITRE, 0.0);
                 Assert.AreEqual(firstLitreValue, secondLitreValue);
             }
             catch (QualityMeaurementException e)
@@ -130,9 +132,39 @@ namespace QualityMeasurementProgram
         {
             try
             {
-                double firstLitreValue = litre.ConvertValueToInch(Volumes.Unit.Litre, 0.0);
-                double secondLitreValue = litre.ConvertValueToInch(Volumes.Unit.Litre, 1.0);
+                double firstLitreValue = litre.ConvertValueToInch(Volumes.Unit.LITRE, 0.0);
+                double secondLitreValue = litre.ConvertValueToInch(Volumes.Unit.LITRE, 1.0);
                 Assert.AreNotEqual(firstLitreValue, secondLitreValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenOneGallonAndThreePoint78Litre_WhenValueChecked_ShouldReturnEqual()
+        {
+            try
+            {
+                double gallonValue = gallon.ConvertValueToInch(Volumes.Unit.GALLONToLITRE, 0.0);
+                double litreValue = litre.ConvertValueToInch(Volumes.Unit.LITRE, 3.78);
+                Assert.AreNotEqual(gallonValue, litreValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenZeroMiliLitreAndZeroMiliLitre_WhenValueChecked_ShouldReturnEqual()
+        {
+            try
+            {
+                double firstMiliLitreValue = miliLitre.ConvertValueToInch(Volumes.Unit.MILILITREToLITRE, 0.0);
+                double secondMiliLitreValue = miliLitre.ConvertValueToInch(Volumes.Unit.MILILITREToLITRE, 0.0);
+                Assert.AreEqual(firstMiliLitreValue, secondMiliLitreValue);
             }
             catch (QualityMeaurementException e)
             {
