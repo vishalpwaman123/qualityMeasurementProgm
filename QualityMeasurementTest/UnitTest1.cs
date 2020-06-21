@@ -462,5 +462,20 @@ namespace QualityMeasurementTest
             }
         }
 
+        [Test]
+        public void GivenTwoObjectsOfCentiMeter_WhenCheckReference_ShouldReturnFalse()
+        {
+            try
+            {
+                Length firstCentiMeter = new Length();
+                Length secondCentimeter = new Length();
+                bool areEqual = System.Object.ReferenceEquals(firstCentiMeter, secondCentimeter);
+                Assert.IsFalse(areEqual);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
