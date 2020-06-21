@@ -8,12 +8,15 @@ namespace QualityMeasurementTest
         private Length yard = null;
         private Length feet = null;
         private Length inch = null;
+        private Length centiMeter = null;
+
         [SetUp]
         public void Setup()
         {
             this.yard = new Length();
             this.feet = new Length();
             this.inch = new Length();
+            this.centiMeter = new Length();
         }
 
         [Test]
@@ -422,6 +425,98 @@ namespace QualityMeasurementTest
                 double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
                 double feetValue = feet.ConvertTheValue(Length.Unit.YARDToINCH, 3.0);
                 Assert.AreNotEqual(yardValue, feetValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenZeroCentiMeterAndZeroCentiMeter_WhenComparingLength_ShouldReturnEqualLength()
+        {
+            try
+            {
+                double firstCentiMeterValue = yard.ConvertTheValue(Length.Unit.CENTIMETER, 0.0);
+                double secondCentiMeterValue = feet.ConvertTheValue(Length.Unit.CENTIMETER, 0.0);
+                Assert.AreEqual(firstCentiMeterValue, secondCentiMeterValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenZeroCentiMeterAndNull_WhenComparingLength_ShouldReturnNotEqualLength()
+        {
+            try
+            {
+                double firstCentiMeterValue = yard.ConvertTheValue(Length.Unit.CENTIMETER, 0.0);
+                Length secondCentiMeterValue = null;
+                Assert.AreNotEqual(firstCentiMeterValue, secondCentiMeterValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenTwoObjectsOfCentiMeter_WhenCheckReference_ShouldReturnFalse()
+        {
+            try
+            {
+                Length firstCentiMeter = new Length();
+                Length secondCentimeter = new Length();
+                bool areEqual = System.Object.ReferenceEquals(firstCentiMeter, secondCentimeter);
+                Assert.IsFalse(areEqual);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenTwoObjectsOfCentiMeter_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
+        {
+            try
+            {
+                Length firstCentiMeter = new Length();
+                Length secondCentimeter = firstCentiMeter;
+                bool areEqual = System.Object.ReferenceEquals(firstCentiMeter, secondCentimeter);
+                Assert.IsTrue(areEqual);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenTwoObjectsOfCentiMeter_WhenTypeChecked_ShouldReturnEqual()
+        {
+            try
+            {
+                double firstCentiMeter = inch.ConvertTheValue(Length.Unit.CENTIMETER, 0.0);
+                double secondCentimeter = inch.ConvertTheValue(Length.Unit.CENTIMETER, 1.0);
+                Assert.AreEqual(firstCentiMeter.GetType(), secondCentimeter.GetType());
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void GivenZeroCentiMeterAnd1CentiMeter_WhenValueChecked_ShouldReturnNotEqual()
+        {
+            try
+            {
+                double firstCentiMeterValue = inch.ConvertTheValue(Length.Unit.CENTIMETER, 0.0);
+                double secondCentimeterValue = inch.ConvertTheValue(Length.Unit.CENTIMETER, 1.0);
+                Assert.AreNotEqual(firstCentiMeterValue, secondCentimeterValue);
             }
             catch (QualityMeaurementException e)
             {

@@ -6,18 +6,18 @@ namespace QualityMeasurementProgram
 {
    public class Length
     {
-        public enum Unit { FEET, INCH ,YARD , FEETToINCH, YARDToINCH }
+        public enum Unit {
+            FEET,
+            INCH, 
+            YARD,
+            FEETToINCH,
+            YARDToINCH,
+            CENTIMETER
+        }
 
         private Unit unit;
         private double value;
-        private double FeetToInch = 12.0;
-        private double InchToFeet = 12.0;
-        private double FeetToYard = 3.0;
-        private double YardToInch = 36.0;
-        private double InchToYard = 36.0;
-        private double YardToFeet = 3.0;
-
-
+        
         public Length()
         {
             
