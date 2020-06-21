@@ -124,5 +124,20 @@ namespace NUnitTestQuantityMeasurement
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1TonneAnd1KiloGram_ShouldReturnsNotEqual()
+        {
+            try
+            {
+                double tonneValue = tonne.ConvertValueToKiloGrams(Weight.Unit.TONNEtoKILOGRAM, 0.0);
+                double kiloGramValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 1.0);
+                Assert.AreNotEqual(tonneValue, kiloGramValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
