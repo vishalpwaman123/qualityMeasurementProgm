@@ -46,5 +46,21 @@ namespace QualityMeasurementProgram
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void GivenTwoObjects_WhenCheckReference_ShouldReturnFalse()
+        {
+            try
+            {
+                Volumes firstObject = new Volumes();
+                Volumes secondObject = new Volumes();
+                bool areEqual = System.Object.ReferenceEquals(firstObject, secondObject);
+                Assert.IsFalse(areEqual);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
