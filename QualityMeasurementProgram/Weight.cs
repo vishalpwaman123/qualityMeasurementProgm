@@ -10,7 +10,8 @@ namespace QualityMeasurementProgram
         {
             KILOGRAMS,
             GRAMS,
-            GRAMStoKILOGRAMS
+            GRAMStoKILOGRAMS,
+            TONNEtoKILOGRAM
         }
 
         public Weight()
@@ -25,7 +26,10 @@ namespace QualityMeasurementProgram
                 {
                     return value / 1000;
                 }
-
+                if (unit.Equals(Unit.TONNEtoKILOGRAM))
+                {
+                    return value * 1000;
+                }
                 return value;
             }
             catch (QualityMeaurementException e)
