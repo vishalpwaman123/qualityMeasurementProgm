@@ -94,5 +94,20 @@ namespace QualityMeasurementProgram
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given0GallonAnd1Gallon_WhenValueChecked_ShouldReturnNotEqual()
+        {
+            try
+            {
+                double firstGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 0.0);
+                double secondGallonValue = gallon.ConvertValueToInch(Volumes.Unit.Gallon, 1.0);
+                Assert.AreNotEqual(firstGallonValue, secondGallonValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
