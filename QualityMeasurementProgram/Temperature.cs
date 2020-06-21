@@ -8,6 +8,7 @@ namespace QualityMeasurementProgram
     {
         public enum Unit
         {
+            Celsius,
             Fahrenheit,
             FahrenheitToCelsius
         }
