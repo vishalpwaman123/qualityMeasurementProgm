@@ -699,7 +699,7 @@ namespace QualityMeasurementTest
             }
             catch (QualityMeaurementException e)
             {
-                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT,e.Type);
             }
         }
     }
