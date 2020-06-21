@@ -583,5 +583,22 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1InchAnd1Inch_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double firstInchValue = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+                double secondInchValue = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+                double ActualValue = inch.AddTwoLength(firstInchValue, secondInchValue);
+                double ExpectedValue = 2.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }

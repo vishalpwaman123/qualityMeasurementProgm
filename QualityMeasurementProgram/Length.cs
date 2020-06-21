@@ -42,6 +42,12 @@ namespace QualityMeasurementProgram
 
                 return value;
         }
+
+        public double AddTwoLength(double firstInchValue, double secondInchValue)
+        {
+            return firstInchValue + secondInchValue;
+        }
+
         public Length(Unit unit, string value)
         {
             throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
