@@ -237,5 +237,22 @@ namespace QualityMeasurementProgram
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1LitreAnd1000MiliLitre_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double litreValue = litre.ConvertValueToInch(Volumes.Unit.LITRE, 1.0);
+                double miliLitreValue = miliLitre.ConvertValueToInch(Volumes.Unit.MILILITREToLITRE, 1000.0);
+                double ActualValue = litre.AddTwoVolume(litreValue, miliLitreValue);
+                double ExpectedValue = 2.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
