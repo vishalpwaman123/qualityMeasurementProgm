@@ -21,9 +21,31 @@ namespace NUnitTestQuantityMeasurement
         [Test]
         public void Given0KiloGramsAnd0KiloGrams_ShouldReturnsEqual()
         {
-            double firstKiloGramsValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 0.0);
-            double secondKiloGramsValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 0.0);
-            Assert.AreEqual(firstKiloGramsValue, secondKiloGramsValue);
+            try
+            {
+                double firstKiloGramsValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 0.0);
+                double secondKiloGramsValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 0.0);
+                Assert.AreEqual(firstKiloGramsValue, secondKiloGramsValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void Given0KiloGramsAnd1KiloGrams_ShouldReturnsEqual()
+        {
+            try
+            {
+                double firstKiloGramsValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 0.0);
+                double secondKiloGramsValue = kiloGram.ConvertValueToKiloGrams(Weight.Unit.KILOGRAMS, 1.0);
+                Assert.AreNotEqual(firstKiloGramsValue, secondKiloGramsValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
     }
 }
