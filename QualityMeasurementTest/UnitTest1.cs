@@ -651,5 +651,15 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
-}
+
+        [Test]
+        public void Given2InchAnd2andHalfCentimeter_WhenAdded_ShouldReturnSum()
+        {
+            double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+            double centiMeterValue = centiMeter.ConvertTheValue(Length.Unit.CENTIMETERToINCH, 2.5);
+            double ActualValue = inch.AddTwoLength(inchValue, centiMeterValue);
+            double ExpectedValue = 3.0;
+            Assert.AreEqual(ExpectedValue, ActualValue);
+        }
+    }
 }
