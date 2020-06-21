@@ -34,5 +34,9 @@ namespace QualityMeasurementProgram
             }
         }
 
+        public double AddTwoVolume(double firstLitreValue, double secondLitreValue)
+        {
+            return firstLitreValue + secondLitreValue;
+        }
     }
 }
