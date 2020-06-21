@@ -64,7 +64,7 @@ namespace QualityMeasurementProgram
         }
 
         [Test]
-        public void GivenTwoObjects_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
+        public void GivenTwoObjects_WhenFirstAssignToSecondReferenceCheck_ShouldReturnTrue()
         {
             try
             {
@@ -76,7 +76,7 @@ namespace QualityMeasurementProgram
             }
             catch (QualityMeaurementException e)
             {
-                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT,e.Type);
             }
         }
     }
