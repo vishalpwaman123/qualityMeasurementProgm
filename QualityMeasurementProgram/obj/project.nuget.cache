@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "phIkIulHTzekDY/6B0zTdW38YR3X17aXX9jRwpobpPPN5HGIDl3w+ijuE4WpueOftX+QdNzxwG6pianwqWriuA==",
+  "dgSpecHash": "nTbXA3eHmo11dpiR6K1q+g6septLcv8tRKNkcBkgGohbLD8dbQQc/AGMbDfyZNAmkHbuX+wJrRbvPSI1u61SBg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vishal\\source\\repos\\QualityMeasurementProgram\\QualityMeasurementProgram\\QualityMeasurementProgram.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Vishal\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Vishal\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\Vishal\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512"
+  ],
   "logs": []
 }
