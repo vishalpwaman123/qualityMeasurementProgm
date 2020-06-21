@@ -621,11 +621,35 @@ namespace QualityMeasurementTest
         [Test]
         public void GivenTwoFeetAndTwoInch_WhenAdded_ShouldReturnSum()
         {
-            double feetValue = inch.ConvertTheValue(Length.Unit.FEETToINCH, 2.0);
-            double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
-            double ActualValue = inch.AddTwoLength(feetValue, inchValue);
-            double ExpectedValue = 26.0;
-            Assert.AreEqual(ExpectedValue, ActualValue);
+            try
+            {
+                double feetValue = inch.ConvertTheValue(Length.Unit.FEETToINCH, 2.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+                double ActualValue = inch.AddTwoLength(feetValue, inchValue);
+                double ExpectedValue = 26.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
-    }
+
+        [Test]
+        public void Given1FeetAnd1Feet_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double firstFeetValue = inch.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double secondFeetValue = inch.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double ActualValue = inch.AddTwoLength(firstFeetValue, secondFeetValue);
+                double ExpectedValue = 24.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+}
 }
