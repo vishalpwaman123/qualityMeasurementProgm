@@ -538,5 +538,21 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given1FeetAnd30CentiMeter_WhenValueChecked_ShouldReturnEqual()
+        {
+            try
+            {
+                double feetValue = inch.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double centimeterValue = inch.ConvertTheValue(Length.Unit.CENTIMETERToINCH, 30.0);
+                Assert.AreEqual(feetValue, centimeterValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
     }
 }
