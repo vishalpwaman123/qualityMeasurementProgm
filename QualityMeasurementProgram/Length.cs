@@ -6,7 +6,7 @@ namespace QualityMeasurementProgram
 {
    public class Length
     {
-        public enum Unit { FEET, INCH ,YARD}
+        public enum Unit { FEET, INCH ,YARD , FEETToINCH, YARDToINCH }
 
         private Unit unit;
         private double value;
@@ -18,54 +18,27 @@ namespace QualityMeasurementProgram
         private double YardToFeet = 3.0;
 
 
-        public Length(Unit unit, double value)
+        public Length()
         {
-            this.unit = unit;
-            if (value.Equals(typeof(string)))
-            {
-                throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
-            }
-            this.value = value;
+            
         }
 
+        public double ConvertTheValue(Unit unit, double value)
+        {
+            
+                if (unit.Equals(Unit.FEETToINCH))
+                {
+                    return value * 12.0;
+                }
+                else if (unit.Equals(Unit.YARDToINCH))
+                {
+                    return value * 36.0;
+                }
+                return value;
+        }
         public Length(Unit unit, string value)
         {
             throw new QualityMeaurementException("Invalid Argument", QualityMeaurementException.ExceptionType.INVALID_ARGUMENT);
-        }
-
-        public bool Compare(Length Value)
-        {  
-            if (this.unit.Equals(Unit.FEET) && Value.unit.Equals(Unit.INCH))
-            {
-                return Value.value.CompareTo(this.value * FeetToInch) == 0;
-            }
-
-            if (this.unit.Equals(Unit.INCH) && Value.unit.Equals(Unit.FEET))
-            {
-                return Value.value.CompareTo(this.value / InchToFeet) == 0;
-            }
-
-            if (this.unit.Equals(Unit.FEET) && Value.unit.Equals(Unit.YARD))
-            {
-                return Value.value.CompareTo(this.value / FeetToYard) == 0;
-            }
-
-            if (this.unit.Equals(Unit.YARD) && Value.unit.Equals(Unit.INCH))
-            {
-                return Value.value.CompareTo(this.value * YardToInch) == 0;
-            }
-
-            if (this.unit.Equals(Unit.INCH) && Value.unit.Equals(Unit.YARD))
-            {
-                return Value.value.CompareTo(this.value / InchToYard) == 0;
-            }
-
-            if (this.unit.Equals(Unit.YARD) && Value.unit.Equals(Unit.FEET))
-            {
-                return Value.value.CompareTo(this.value * YardToFeet) == 0;
-            }
-
-            return false;
         }
 
         public override bool Equals(object object_parameter)

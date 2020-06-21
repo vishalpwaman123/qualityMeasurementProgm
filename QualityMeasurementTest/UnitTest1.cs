@@ -5,9 +5,15 @@ namespace QualityMeasurementTest
 
     public class Tests
     {
+        private Length yard = null;
+        private Length feet = null;
+        private Length inch = null;
         [SetUp]
         public void Setup()
         {
+            this.yard = new Length();
+            this.feet = new Length();
+            this.inch = new Length();
         }
 
         [Test]
@@ -15,8 +21,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstFeet = new Length(Length.Unit.FEET, 0.0);
-                Length secondFeet = new Length(Length.Unit.FEET, 0.0);
+                double firstFeet = feet.ConvertTheValue(Length.Unit.FEETToINCH, 0.0);
+                double secondFeet = feet.ConvertTheValue(Length.Unit.FEETToINCH, 0.0);
                 Assert.AreEqual(firstFeet, secondFeet);
             }
             catch (QualityMeaurementException e)
@@ -32,7 +38,7 @@ namespace QualityMeasurementTest
             {
 
                 Length firstFeet = new Length(Length.Unit.FEET, "0.0");
-                Length secondFeet = new Length(Length.Unit.FEET, 0.0);
+                double secondFeet = feet.ConvertTheValue(Length.Unit.FEETToINCH, 0.0);
                 Assert.AreEqual(firstFeet, secondFeet);
             }
             catch (QualityMeaurementException e)
@@ -44,9 +50,9 @@ namespace QualityMeasurementTest
         [Test]
         public void GivenZeroFeetAndZeroFeet_ShouldReturnsNotEqual()
         {
-            Length firstFeet = new Length(Length.Unit.FEET, 0.0);
-            Length secondFeet = new Length(Length.Unit.FEET, 5.0);
-            Assert.AreNotEqual(firstFeet, secondFeet);
+            double firstFeet = feet.ConvertTheValue(Length.Unit.FEETToINCH, 3.0);
+            double firstFeet1 = feet.ConvertTheValue(Length.Unit.FEETToINCH, 5.0);
+            Assert.AreNotEqual(firstFeet, firstFeet1);
         }
 
         [Test]
@@ -54,7 +60,7 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstFeet = new Length(Length.Unit.FEET, 0.0);
+                Length firstFeet = new Length();
                 Length secondFeet = firstFeet;
                 bool areEqual = System.Object.ReferenceEquals(firstFeet, secondFeet);
                 Assert.IsTrue(areEqual);
@@ -69,8 +75,8 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstFeet = new Length(Length.Unit.FEET, 0.0); ;
-                Length secondFeet = new Length(Length.Unit.FEET, 3.0);
+                double firstFeet = feet.ConvertTheValue(Length.Unit.FEETToINCH, 3.0);
+                double secondFeet = feet.ConvertTheValue(Length.Unit.YARDToINCH, 3.0);
                 Assert.AreEqual(firstFeet.GetType(), secondFeet.GetType());
             }catch(QualityMeaurementException e)
             {
@@ -83,9 +89,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstFeet = new Length(Length.Unit.FEET, 0.0);
-                Length secondFeet = new Length(Length.Unit.FEET, 1.0);
-                Assert.AreNotEqual(firstFeet, secondFeet);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 0.0);
+                double feetValue1 = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                Assert.AreNotEqual(feetValue, feetValue1);
             }catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
@@ -97,9 +103,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstInch = new Length(Length.Unit.INCH, 0.0);
-                Length secondInch = new Length(Length.Unit.INCH, 0.0);
-                Assert.AreEqual(firstInch, secondInch);
+                double inchValue1 = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
+                Assert.AreEqual(inchValue, inchValue1);
             }catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
@@ -112,9 +118,9 @@ namespace QualityMeasurementTest
             try
             {
                 Length firstInch = new Length(Length.Unit.INCH, "0.0");
-                Length secondInch = new Length(Length.Unit.INCH, 0.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
             }
-            catch(QualityMeaurementException e)
+            catch (QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
@@ -125,7 +131,7 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                double firstInch = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
                 Length secondInch = null;
                 Assert.AreNotEqual(firstInch, secondInch);
             }catch(QualityMeaurementException e)
@@ -139,9 +145,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstInch = new Length(Length.Unit.INCH, 0.0);
-                Length secondInch = new Length(Length.Unit.INCH, 0.0);
-                bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
+                Length firstFeet = new Length();
+                Length secondFeet = new Length();
+                bool areEqual = System.Object.ReferenceEquals(firstFeet, secondFeet);
                 Assert.IsFalse(areEqual);
             }catch(QualityMeaurementException e)
             {
@@ -157,7 +163,7 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstInch = new Length(Length.Unit.INCH, 0.0);
+                Length firstInch = new Length();
                 Length secondInch = firstInch;
                 bool areEqual = System.Object.ReferenceEquals(firstInch, secondInch);
                 Assert.IsTrue(areEqual);
@@ -172,9 +178,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstInch = new Length(Length.Unit.INCH, 0.0);
-                Length secondInch = new Length(Length.Unit.INCH, 0.0);
-                Assert.AreEqual(firstInch.GetType(), secondInch.GetType());
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
+                double inchValue1 = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
+                Assert.AreEqual(inchValue.GetType(), inchValue1.GetType());
             }catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
@@ -186,11 +192,11 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length feetValue = new Length(Length.Unit.FEET, 0.0);
-                Length inchValue = new Length(Length.Unit.INCH, 0.0);
-                bool compareCheck = feetValue.Compare(inchValue);
-                Assert.IsTrue(compareCheck);
-            }catch(QualityMeaurementException e)
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 0.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 0.0);
+                Assert.AreEqual(inchValue, feetValue);
+            }
+            catch(QualityMeaurementException e)
             {
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
@@ -204,10 +210,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length feetValue = new Length(Length.Unit.FEET, 1.0);
-                Length inchValue = new Length(Length.Unit.INCH, 2.0);
-                bool compareCheck = feetValue.Compare(inchValue);
-                Assert.IsFalse(compareCheck);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+                Assert.AreNotEqual(inchValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -221,9 +226,7 @@ namespace QualityMeasurementTest
             try
             {
                 Length feetValue = new Length(Length.Unit.FEET, "1.0");
-                Length inchValue = new Length(Length.Unit.INCH, 2.0);
-                bool compareCheck = feetValue.Compare(inchValue);
-                Assert.IsFalse(compareCheck);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
             }
             catch (QualityMeaurementException e)
             {
@@ -236,10 +239,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length inchValue = new Length(Length.Unit.INCH, 1.0);
-                Length feetValue = new Length(Length.Unit.FEET, 2.0);
-                bool compareCheck = inchValue.Compare(feetValue);
-                Assert.IsFalse(compareCheck);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 2.0);
+                Assert.AreNotEqual(inchValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -252,10 +254,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length feetValue = new Length(Length.Unit.FEET, 1.0);
-                Length inchValue = new Length(Length.Unit.INCH, 12.0);
-                bool compareCheck = feetValue.Compare(inchValue);
-                Assert.IsTrue(compareCheck);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 12.0);
+                Assert.AreEqual(inchValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -268,10 +269,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length feetValue = new Length(Length.Unit.FEET, 1.0);
-                Length inchValue = new Length(Length.Unit.INCH, 13.0);
-                bool compareCheck = feetValue.Compare(inchValue);
-                Assert.IsFalse(compareCheck);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 13.0);
+                Assert.AreNotEqual(inchValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -284,10 +284,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length inchValue = new Length(Length.Unit.INCH, 12.0);
-                Length feetValue = new Length(Length.Unit.FEET, 1.0);
-                bool compareCheck = inchValue.Compare(feetValue);
-                Assert.IsTrue(compareCheck);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 12.0);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                Assert.AreEqual(inchValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -300,10 +299,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length inchValue = new Length(Length.Unit.INCH, 12.0);
-                Length feetValue = new Length(Length.Unit.FEET, 2.0);
-                bool compareCheck = inchValue.Compare(feetValue);
-                Assert.IsFalse(compareCheck);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 12.0);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 2.0);
+                Assert.AreNotEqual(inchValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -316,10 +314,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length firstYardValue = new Length(Length.Unit.YARD, 1.0);
-                Length secondYardValue = new Length(Length.Unit.YARD, 1.0);
-                bool compareCheck = firstYardValue.Compare(secondYardValue);
-                Assert.IsFalse(compareCheck);
+                double yardValue1 = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                double yardValue2 = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                Assert.AreEqual(yardValue1, yardValue2);
             }
             catch (QualityMeaurementException e)
             {
@@ -332,10 +329,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length feetValue = new Length(Length.Unit.FEET, 9.0);
-                Length yardValue = new Length(Length.Unit.YARD, 3.0);
-                bool compareCheck = feetValue.Compare(yardValue);
-                Assert.IsTrue(compareCheck);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 3.0);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                Assert.AreEqual(feetValue, yardValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -348,10 +344,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length feetValue = new Length(Length.Unit.FEET, 1.0);
-                Length yardValue = new Length(Length.Unit.YARD, 2.0);
-                bool compareCheck = feetValue.Compare(yardValue);
-                Assert.IsFalse(compareCheck);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 1.0);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                Assert.AreNotEqual(feetValue, yardValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -364,10 +359,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length inchValue = new Length(Length.Unit.INCH, 1.0);
-                Length yardValue = new Length(Length.Unit.YARD, 1.0);
-                bool compareCheck = inchValue.Compare(yardValue);
-                Assert.IsFalse(compareCheck);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                Assert.AreNotEqual(inchValue, yardValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -380,10 +374,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length yardValue = new Length(Length.Unit.YARD, 1.0);
-                Length inchValue = new Length(Length.Unit.INCH, 36.0);
-                bool compareCheck = yardValue.Compare(inchValue);
-                Assert.IsTrue(compareCheck);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 36.0);
+                Assert.AreEqual(yardValue, inchValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -396,10 +389,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length inchValue = new Length(Length.Unit.INCH, 36.0);
-                Length yardValue = new Length(Length.Unit.YARD, 1.0);
-                bool compareCheck = inchValue.Compare(yardValue);
-                Assert.IsTrue(compareCheck);
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 36.0);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                Assert.AreEqual(inchValue, yardValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -412,10 +404,9 @@ namespace QualityMeasurementTest
         {
             try
             {
-                Length yardValue = new Length(Length.Unit.YARD, 1.0);
-                Length feetValue = new Length(Length.Unit.FEET, 3.0);
-                bool compareCheck = yardValue.Compare(feetValue);
-                Assert.IsTrue(compareCheck);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                double feetValue = feet.ConvertTheValue(Length.Unit.FEETToINCH, 3.0);
+                Assert.AreEqual(feetValue, yardValue);
             }
             catch (QualityMeaurementException e)
             {
@@ -424,13 +415,13 @@ namespace QualityMeasurementTest
         }
 
         [Test]
-        public void Given0YardAndNull_ShouldReturnsNotEqual()
+        public void GivenZeroYardAndNull_ShouldReturnsNotEqual()
         {
             try
             {
-                Length firstYard = new Length(Length.Unit.YARD, 0.0);
-                Length secondYard = null;
-                Assert.AreNotEqual(firstYard, secondYard);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                double feetValue = feet.ConvertTheValue(Length.Unit.YARDToINCH, 3.0);
+                Assert.AreNotEqual(yardValue, feetValue);
             }
             catch (QualityMeaurementException e)
             {
