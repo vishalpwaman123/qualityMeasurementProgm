@@ -508,5 +508,20 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void GivenZeroCentiMeterAnd1CentiMeter_WhenValueChecked_ShouldReturnNotEqual()
+        {
+            try
+            {
+                double firstCentiMeterValue = inch.ConvertTheValue(Length.Unit.CENTIMETER, 0.0);
+                double secondCentimeterValue = inch.ConvertTheValue(Length.Unit.CENTIMETER, 1.0);
+                Assert.AreNotEqual(firstCentiMeterValue, secondCentimeterValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
