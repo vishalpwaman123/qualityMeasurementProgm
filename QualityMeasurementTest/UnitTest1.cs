@@ -477,5 +477,21 @@ namespace QualityMeasurementTest
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void GivenTwoObjectsOfCentiMeter_WhenFirstAssignToSecondAndReferenceCheck_ShouldReturnTrue()
+        {
+            try
+            {
+                Length firstCentiMeter = new Length();
+                Length secondCentimeter = firstCentiMeter;
+                bool areEqual = System.Object.ReferenceEquals(firstCentiMeter, secondCentimeter);
+                Assert.IsTrue(areEqual);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
