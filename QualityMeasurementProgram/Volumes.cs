@@ -21,6 +21,9 @@ namespace QualityMeasurementProgram
                 if (unit.Equals(Unit.GALLONToLITRE))
                 {
                     return value * 3.78;
+                }else if(unit.Equals(Unit.MILILITREToLITRE))
+                {
+                    return value / 1000.0;
                 }
 
                 return value;
