@@ -655,11 +655,35 @@ namespace QualityMeasurementTest
         [Test]
         public void Given2InchAnd2andHalfCentimeter_WhenAdded_ShouldReturnSum()
         {
-            double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
-            double centiMeterValue = centiMeter.ConvertTheValue(Length.Unit.CENTIMETERToINCH, 2.5);
-            double ActualValue = inch.AddTwoLength(inchValue, centiMeterValue);
-            double ExpectedValue = 3.0;
-            Assert.AreEqual(ExpectedValue, ActualValue);
+            try
+            {
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 2.0);
+                double centiMeterValue = centiMeter.ConvertTheValue(Length.Unit.CENTIMETERToINCH, 2.5);
+                double ActualValue = inch.AddTwoLength(inchValue, centiMeterValue);
+                double ExpectedValue = 3.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void Given1InchAnd1Yard_WhenAdded_ShouldReturnSum()
+        {
+            try
+            {
+                double inchValue = inch.ConvertTheValue(Length.Unit.INCH, 1.0);
+                double yardValue = yard.ConvertTheValue(Length.Unit.YARDToINCH, 1.0);
+                double ActualValue = inch.AddTwoLength(inchValue, yardValue);
+                double ExpectedValue = 37.0;
+                Assert.AreEqual(ExpectedValue, ActualValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
     }
 }
