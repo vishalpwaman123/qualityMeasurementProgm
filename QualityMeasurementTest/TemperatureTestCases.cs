@@ -19,9 +19,31 @@ namespace NUnitTestQuantityMeasurement
         [Test]
         public void Given0FahrenheitAnd0Fahrenheit_ShouldReturnsEqual()
         {
-            double firstFahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.Fahrenheit, 0.0);
-            double secondFahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.Fahrenheit, 0.0);
-            Assert.AreEqual(firstFahrenheitValue, secondFahrenheitValue);
+            try
+            {
+                double firstFahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.Fahrenheit, 0.0);
+                double secondFahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.Fahrenheit, 0.0);
+                Assert.AreEqual(firstFahrenheitValue, secondFahrenheitValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
+
+        [Test]
+        public void Given0FahrenheitAnd1Fahrenheit_ShouldReturnNotEqual()
+        {
+            try
+            {
+                double firstFahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.Fahrenheit, 0.0);
+                double secondFahrenheitValue = fahrenheit.ConvertValueToCelsius(Temperature.Unit.Fahrenheit, 1.0);
+                Assert.AreNotEqual(firstFahrenheitValue, secondFahrenheitValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
         }
     }
 }
