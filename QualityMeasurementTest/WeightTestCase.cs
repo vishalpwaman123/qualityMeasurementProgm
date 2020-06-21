@@ -62,5 +62,20 @@ namespace NUnitTestQuantityMeasurement
                 Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
             }
         }
+
+        [Test]
+        public void Given0GramsAnd1Grams_ShouldReturnsEqual()
+        {
+            try
+            {
+                double firstGramsValue = gram.ConvertValueToKiloGrams(Weight.Unit.GRAMStoKILOGRAMS, 0.0);
+                double secondGramsValue = gram.ConvertValueToKiloGrams(Weight.Unit.GRAMStoKILOGRAMS, 1.0);
+                Assert.AreNotEqual(firstGramsValue, secondGramsValue);
+            }
+            catch (QualityMeaurementException e)
+            {
+                Assert.AreEqual(QualityMeaurementException.ExceptionType.INVALID_ARGUMENT, e.Type);
+            }
+        }
     }
 }
